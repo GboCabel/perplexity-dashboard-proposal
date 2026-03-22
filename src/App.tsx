@@ -1,7 +1,7 @@
 /**
  * App.tsx — root shell.
- * Manages theme + language state.
- * Header: responsive (mobile compact), theme toggle, lang toggle, plan badge.
+ * Header simulates Perplexity's top nav: logo + wordmark + Settings breadcrumb.
+ * Controls: lang toggle, theme toggle, plan badge.
  */
 
 import { useState } from "react";
@@ -13,12 +13,12 @@ import { UsageDashboard } from "./components/usage/UsageDashboard";
 import { useLanguage } from "./hooks/useLanguage";
 
 export default function App() {
-  const [mode, setMode]     = useState<ThemeMode>("dark");
+  const [mode, setMode]      = useState<ThemeMode>("dark");
   const { lang, toggleLang } = useLanguage();
 
-  const isDark = mode === "dark";
-  const tr     = t(lang);
-  const colors_ = colors[mode];
+  const isDark  = mode === "dark";
+  const tr      = t(lang);
+  const c       = colors[mode];
 
   const toggleTheme = () => setMode((m) => (m === "dark" ? "light" : "dark"));
 
@@ -27,8 +27,8 @@ export default function App() {
       className={mode}
       style={{
         minHeight:  "100vh",
-        background: colors_.level0,
-        color:      colors_.text,
+        background: c.level0,
+        color:      c.text,
         fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
         transition: "background 300ms ease, color 300ms ease",
       }}
@@ -36,30 +36,75 @@ export default function App() {
       {/* ── Sticky Header ──────────────────────────────────────────── */}
       <header
         className="sticky top-0 z-10 flex justify-between items-center
-                   px-4 py-3 sm:px-7 sm:py-4"
+                   px-4 py-2.5 sm:px-6 sm:py-3"
         style={{
-          borderBottom:   `1px solid ${colors_.border}`,
+          borderBottom:   `1px solid ${c.border}`,
           backdropFilter: "blur(12px)",
-          background:     isDark ? "rgba(12,12,12,0.85)" : "rgba(255,255,255,0.90)",
+          background:     isDark ? "rgba(12,12,12,0.88)" : "rgba(255,255,255,0.92)",
         }}
       >
-        {/* Brand */}
+        {/* ── Left: Perplexity logo + breadcrumb ─────────────────── */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <div
-            className="text-base sm:text-[22px] font-bold tracking-[-0.5px] whitespace-nowrap"
-            style={{ color: colors_.text }}
-          >
-            <span style={{ color: colors_.cyan }}>⟡</span>
-            <span className="hidden xs:inline"> {tr.headerTitle}</span>
-            <span className="inline xs:hidden"> Usage</span>
+          {/* Perplexity logo (real SVG from /public/favicon.svg) */}
+          <img
+            src="/favicon.svg"
+            alt="Perplexity"
+            className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0"
+            style={{ filter: isDark ? "none" : "none" }}
+          />
+
+          {/* Wordmark + breadcrumb */}
+          <div className="flex items-center gap-1.5 min-w-0">
+            {/* "Perplexity" wordmark — hidden on xs to save space */}
+            <span
+              className="hidden xs:inline text-sm sm:text-[15px] font-semibold tracking-[-0.3px] whitespace-nowrap"
+              style={{ color: c.text }}
+            >
+              Perplexity
+            </span>
+
+            {/* Separator */}
+            <span
+              className="hidden xs:inline text-sm font-light"
+              style={{ color: c.textMuted }}
+              aria-hidden="true"
+            >
+              /
+            </span>
+
+            {/* Settings label */}
+            <span
+              className="hidden sm:inline text-sm font-normal whitespace-nowrap"
+              style={{ color: c.textMuted }}
+            >
+              Settings
+            </span>
+
+            <span
+              className="hidden sm:inline text-sm font-light"
+              style={{ color: c.textMuted }}
+              aria-hidden="true"
+            >
+              /
+            </span>
+
+            {/* Current page — always visible */}
+            <span
+              className="text-sm sm:text-[15px] font-semibold whitespace-nowrap"
+              style={{ color: c.text }}
+            >
+              {lang === "en" ? "Usage" : "Uso"}
+            </span>
+
+            {/* PROTOTYPE badge */}
+            <span className="hidden sm:inline-flex ml-1">
+              <PrototypeBadge />
+            </span>
           </div>
-          <span className="hidden sm:inline-flex">
-            <PrototypeBadge />
-          </span>
         </div>
 
-        {/* Controls */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        {/* ── Right: controls ────────────────────────────────────── */}
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           {/* Language toggle */}
           <button
             onClick={toggleLang}
@@ -67,9 +112,9 @@ export default function App() {
             className="px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
                        transition-all duration-150 border"
             style={{
-              borderColor: colors_.border,
-              background:  colors_.level2,
-              color:       colors_.cyan,
+              borderColor: c.border,
+              background:  c.level2,
+              color:       c.cyan,
             }}
           >
             {tr.langToggle}
@@ -82,9 +127,9 @@ export default function App() {
             className="flex items-center gap-1 px-2.5 py-1.5 sm:px-3.5 rounded-lg
                        text-xs font-medium transition-all duration-150 border"
             style={{
-              borderColor: colors_.border,
-              background:  colors_.level2,
-              color:       colors_.textSecondary,
+              borderColor: c.border,
+              background:  c.level2,
+              color:       c.textSecondary,
             }}
           >
             <span>{isDark ? "☀" : "●"}</span>
@@ -98,7 +143,7 @@ export default function App() {
             className="px-2.5 py-1.5 sm:px-3.5 rounded-lg text-xs font-semibold font-mono whitespace-nowrap"
             style={{
               background: isDark ? "rgba(32,184,205,0.15)" : "rgba(32,184,205,0.10)",
-              color:      colors_.cyan,
+              color:      c.cyan,
             }}
           >
             <span className="sm:hidden">Pro</span>
@@ -106,6 +151,43 @@ export default function App() {
           </div>
         </div>
       </header>
+
+      {/* ── Page title (simulates the Settings page heading) ───────── */}
+      <div
+        className="max-w-[860px] mx-auto px-3 pt-6 pb-0 sm:px-5 sm:pt-8"
+        style={{ borderBottom: `1px solid ${c.borderSubtle}` }}
+      >
+        <div className="flex items-end justify-between pb-4">
+          <div>
+            <h1
+              className="text-xl sm:text-2xl font-bold tracking-[-0.5px] mb-1"
+              style={{ color: c.text }}
+            >
+              {lang === "en" ? "Usage" : "Uso"}
+            </h1>
+            <p className="text-xs sm:text-sm" style={{ color: c.textMuted }}>
+              {lang === "en"
+                ? "Track your resource consumption across the current billing period."
+                : "Seguí tu consumo de recursos durante el período de facturación actual."}
+            </p>
+          </div>
+        </div>
+
+        {/* Info banner — mimics the Perplexity help center note */}
+        <div
+          className="flex items-center gap-2 py-2.5 px-3 rounded-lg mb-4 text-xs"
+          style={{
+            background:  isDark ? "rgba(32,184,205,0.08)" : "rgba(32,184,205,0.06)",
+            borderLeft:  `2px solid ${c.cyan}`,
+            color:        c.textSecondary,
+          }}
+        >
+          <span style={{ color: c.cyan }}>ℹ</span>
+          {lang === "en"
+            ? "Usage data is approximate and limits may change without notice."
+            : "Los datos de uso son aproximados y los límites pueden cambiar sin previo aviso."}
+        </div>
+      </div>
 
       {/* ── Dashboard ─────────────────────────────────────────────── */}
       <main>
