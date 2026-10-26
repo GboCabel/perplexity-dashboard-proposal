@@ -1,15 +1,36 @@
 {
   "plataforma": "Reels/TikTok/Shorts",
-  "formato": {"aspect": "9:16", "resolucion": "720x1280"},
-  "piezas": [{"id": "mcm_entrevista", "duracion_objetivo_s": [60, 75]}],
+  "formato": {
+    "aspect": "9:16",
+    "resolucion": "720x1280"
+  },
+  "piezas": [
+    {
+      "id": "mcm_entrevista",
+      "duracion_objetivo_s": [
+        60,
+        75
+      ]
+    }
+  ],
   "audio": {
     "voz": "raw/eltiempo.mp4 (entrevista El Tiempo), unica fuente de voz",
     "fondo": "ambiente de los clips B-roll a -18/-20 dB con ducking bajo la voz",
-    "export": "AAC 192k"
+    "export": "AAC 192k",
+    "musica": {
+      "archivo": "work/music/epic.wav (vidIQ generate_music, original libre de derechos)",
+      "estilo": "orquestal cinematico epico, instrumental",
+      "offset_s": 6.9,
+      "nivel": "18-22 dB bajo la voz con ducking; sube en huecos y cierre"
+    }
   },
   "video": {
     "estructura": "solo B-roll; la entrevista nunca se ve",
-    "broll": ["raw/convzlacomando.mp4", "raw/mcm_a.mp4", "raw/mcm_b.mp4 (16:9, requiere adaptar a 9:16)"],
+    "broll": [
+      "raw/convzlacomando.mp4",
+      "raw/mcm_a.mp4",
+      "raw/mcm_b.mp4 (16:9, requiere adaptar a 9:16)"
+    ],
     "ken_burns": true,
     "codec": "H.264 CRF 18-20, fps y resolucion de origen"
   },
@@ -19,12 +40,28 @@
     "posicion_y": 0.65
   },
   "graficos": {
-    "rotulo": {"texto": "María Corina Machado", "segunda_linea": null, "duracion_s": [3, 4]},
-    "gancho_superior": "fijo todo el video; proponer 3 opciones desde la transcripcion",
+    "rotulo": {
+      "texto": "María Corina Machado",
+      "segunda_linea": null,
+      "duracion_s": [
+        3,
+        4
+      ]
+    },
+    "gancho_superior": {
+      "texto": "ESTO DEPENDE DE NOSOTROS",
+      "fijo": true,
+      "posicion_y": 0.14
+    },
     "credito_fuente": false
   },
   "idioma": "es-VE",
-  "ortografia_exacta": ["María Corina Machado"],
+  "ortografia_exacta": [
+    "María Corina Machado"
+  ],
   "no_tocar": [],
-  "repo": "eliminar app React del dashboard y dejar repo solo de video (pendiente de aprobacion del plan)"
+  "repo": "app React eliminada; repo solo de video",
+  "caption_publicacion": {
+    "credito": "Fuente: El Tiempo"
+  }
 }
