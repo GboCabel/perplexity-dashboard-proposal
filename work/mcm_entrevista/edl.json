@@ -255,6 +255,17 @@
    "crop_x_center": 560,
    "ken_burns_max": 1.08,
    "desc": "cierre: MCM con bandera (callback)"
+  },
+  {
+   "n": 24,
+   "t_in": 67.04,
+   "t_out": 68.44,
+   "clip": "convzlacomando",
+   "src_in": 2.64,
+   "src_out": 4.04,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "cola: fuegos artificiales mientras la música cierra"
   }
  ]
 }

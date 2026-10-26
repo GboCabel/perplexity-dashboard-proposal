@@ -27,10 +27,11 @@ FONT_FILE = '/usr/share/fonts/opentype/inter/InterDisplay-Bold.otf'
 
 # ---- parámetros de mezcla ----
 VOICE_END_SRC = 80.24      # el whoosh agudo de la placa de El Tiempo arranca en 80.25 (fade de 18 ms antes)
-MUSIC_OFFSET = 6.9
+MUSIC_OFFSET = 5.1          # el final natural de la pista (decay ~70,9-73,5) cae en la cola
 AMB_BELOW = 22.0           # LU por debajo de la voz (antes del ducking)
 MUSIC_SPEECH_BELOW = 19.5  # LU por debajo de la voz (mediana en habla) antes del rider
 XF = 0.015                 # crossfade de voz en empalmes
+TAIL = 1.4                 # cola musical tras la última palabra (toma 24)
 
 
 def sh(cmd, **kw):
@@ -91,7 +92,7 @@ def db(g):
 cuts = json.load(open(os.path.join(W, 'eltiempo', 'cuts.json')))
 keeps = cuts['keeps']
 edl = json.load(open(os.path.join(W, 'mcm_entrevista', 'edl.json')))['shots']
-TOTAL = sum(b - a for a, b in keeps)
+TOTAL = sum(b - a for a, b in keeps) + TAIL
 NFR = int(round(TOTAL * FPS))
 TOTAL = NFR / FPS
 NS = int(round(TOTAL * SR))
@@ -230,7 +231,7 @@ ONSET_FIX = {('irresponsable,', 12.97): 13.62, ('que', 23.72): 24.21, ('Y', 38.0
              ('y', 26.02): 27.46, ('que', 27.44): 27.64,
              # QA fase 5: "Pero ahí se | quebró una" (habla 34,34-34,62 / 34,78-34,88 / 35,54-)
              ('Pero', 34.12): 34.32, ('ahí', 34.38): 34.46, ('se', 34.58): 34.76,
-             ('quebró', 34.76): 35.53, ('una', 35.88): 35.86,
+             ('quebró', 34.76): 35.53, ('una', 35.88): 35.86, ('al', 27.6): 28.0,
              # cierre: el realce +3 dB desplazaba el DP; se fija a Whisper/islas (66,56 / 66,68)
              ('en', 66.58): 66.56, ('Venezuela.', 66.70): 66.68}
 for (txt, tw), tf in ONSET_FIX.items():
@@ -373,7 +374,7 @@ for bi, bl in enumerate(blocks):
     nxt_start = blocks[bi + 1][0]['s'] - 0.04 if bi + 1 < len(blocks) else TOTAL
     bend = min(bl[-1]['e'] + 0.3, nxt_start)
     if bi + 1 == len(blocks):
-        bend = TOTAL
+        bend = min(bl[-1]['e'] + 0.6, TOTAL)
     # partir en 2 líneas si excede ancho
     def render(hi):
         parts = []
@@ -559,8 +560,8 @@ musd *= db(gm)
 # se baja la música lo que falte (suavizado ~60 ms / 300 ms). Dos iteraciones.
 # cierre: en los últimos 2,5 s la música crece (+6 dB) y el rider se relaja a 15,5 LU
 tax = np.arange(NS) / SR
-musd *= db(np.interp(tax, [TOTAL - 3.2, TOTAL - 2.5], [0, 6.0]))[:, None]
-tgt = np.where(tb + 0.4 > TOTAL - 2.5, 15.5, 17.0)
+musd *= db(np.interp(tax, [TOTAL - TAIL - 3.2, TOTAL - TAIL - 2.5], [0, 6.0]))[:, None]
+tgt = np.where(tb + 0.4 > TOTAL - TAIL - 2.5, 15.5, 17.0)
 spk = np.array([speech[int(t * SR):int(t * SR) + int(0.4 * SR)].mean() > 0.3 for t in tb]) & (LV > V_L - 14)
 for it in range(3):
     zb_, _ = ms_blocks(ambd + musd)
@@ -581,9 +582,9 @@ for it in range(3):
 # cierre: después de la última palabra la música sube a protagonista; red de seguridad fade-out 0,5 s
 tax = np.arange(NS) / SR
 boost = np.interp(tax, [last_word_end + 0.02, last_word_end + 0.2], [0, 12.0])
-fo = np.interp(tax, [TOTAL - 0.5, TOTAL], [1, 0])
+fo = np.interp(tax, [TOTAL - 0.8, TOTAL], [1, 0])
 musd *= (db(boost) * fo)[:, None]
-ambd *= np.interp(tax, [TOTAL - 0.5, TOTAL], [1, 0])[:, None]
+ambd *= np.interp(tax, [TOTAL - 0.8, TOTAL], [1, 0])[:, None]
 
 bed = ambd + musd
 mix = vproc + bed

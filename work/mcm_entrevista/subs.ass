@@ -15,29 +15,29 @@ Style: Rotulo,Inter Display,46,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,-1,0,
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:01:07.04,Box,,0,0,0,,{\an7\pos(0,0)\p1}m 156 106 l 564 106 564 254 156 254{\p0}
-Dialogue: 1,0:00:00.00,0:01:07.04,Hook,,0,0,0,,{\an5\pos(360,180)}ESTO DEPENDE\NDE NOSOTROS
+Dialogue: 0,0:00:00.00,0:01:08.44,Box,,0,0,0,,{\an7\pos(0,0)\p1}m 156 106 l 564 106 564 254 156 254{\p0}
+Dialogue: 1,0:00:00.00,0:01:08.44,Hook,,0,0,0,,{\an5\pos(360,180)}ESTO DEPENDE\NDE NOSOTROS
 Dialogue: 2,0:00:00.00,0:00:03.50,Box,,0,0,0,,{\an7\pos(0,0)\fad(250,250)\1c&H000000&\1a&H38&\p1}m 60 529 l 515 529 515 597 60 597{\p0}
 Dialogue: 3,0:00:00.00,0:00:03.50,Box,,0,0,0,,{\an7\pos(0,0)\fad(250,250)\1c&H0000D4FF&\1a&H00&\p1}m 60 529 l 70 529 70 597 60 597{\p0}
 Dialogue: 4,0:00:00.00,0:00:03.50,Rotulo,,0,0,0,,{\an4\pos(92,563)\fad(250,250)}María Corina Machado
 Dialogue: 5,0:00:00.12,0:00:00.16,Sub,,0,0,0,,{\an5\pos(360,832)}Y YO
 Dialogue: 5,0:00:00.16,0:00:00.28,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}Y{\c&HFFFFFF&} YO
 Dialogue: 5,0:00:00.28,0:00:00.40,Sub,,0,0,0,,{\an5\pos(360,832)}Y YO
-Dialogue: 5,0:00:00.40,0:00:00.48,Sub,,0,0,0,,{\an5\pos(360,832)}Y {\c&H0000D4FF&}YO{\c&HFFFFFF&}
-Dialogue: 5,0:00:00.48,0:00:00.56,Sub,,0,0,0,,{\an5\pos(360,832)}DEBO DECIR ALGO.
+Dialogue: 5,0:00:00.40,0:00:00.52,Sub,,0,0,0,,{\an5\pos(360,832)}Y {\c&H0000D4FF&}YO{\c&HFFFFFF&}
+Dialogue: 5,0:00:00.52,0:00:00.56,Sub,,0,0,0,,{\an5\pos(360,832)}DEBO DECIR ALGO.
 Dialogue: 5,0:00:00.56,0:00:00.68,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}DEBO{\c&HFFFFFF&} DECIR ALGO.
-Dialogue: 5,0:00:00.68,0:00:00.84,Sub,,0,0,0,,{\an5\pos(360,832)}DEBO {\c&H0000D4FF&}DECIR{\c&HFFFFFF&} ALGO.
-Dialogue: 5,0:00:00.84,0:00:00.96,Sub,,0,0,0,,{\an5\pos(360,832)}DEBO DECIR ALGO.
+Dialogue: 5,0:00:00.68,0:00:00.88,Sub,,0,0,0,,{\an5\pos(360,832)}DEBO {\c&H0000D4FF&}DECIR{\c&HFFFFFF&} ALGO.
+Dialogue: 5,0:00:00.88,0:00:00.96,Sub,,0,0,0,,{\an5\pos(360,832)}DEBO DECIR ALGO.
 Dialogue: 5,0:00:00.96,0:00:01.36,Sub,,0,0,0,,{\an5\pos(360,832)}DEBO DECIR {\c&H0000D4FF&}ALGO.{\c&HFFFFFF&}
 Dialogue: 5,0:00:01.36,0:00:01.60,Sub,,0,0,0,,{\an5\pos(360,832)}DEBO DECIR ALGO.
 Dialogue: 5,0:00:01.60,0:00:01.64,Sub,,0,0,0,,{\an5\pos(360,832)}LA EXPERIENCIA
 Dialogue: 5,0:00:01.64,0:00:01.80,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}LA{\c&HFFFFFF&} EXPERIENCIA
 Dialogue: 5,0:00:01.80,0:00:02.04,Sub,,0,0,0,,{\an5\pos(360,832)}LA EXPERIENCIA
 Dialogue: 5,0:00:02.04,0:00:02.56,Sub,,0,0,0,,{\an5\pos(360,832)}LA {\c&H0000D4FF&}EXPERIENCIA{\c&HFFFFFF&}
-Dialogue: 5,0:00:02.56,0:00:02.68,Sub,,0,0,0,,{\an5\pos(360,832)}LA EXPERIENCIA
-Dialogue: 5,0:00:02.68,0:00:02.72,Sub,,0,0,0,,{\an5\pos(360,832)}DEL TERREMOTO,
-Dialogue: 5,0:00:02.72,0:00:02.88,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}DEL{\c&HFFFFFF&} TERREMOTO,
-Dialogue: 5,0:00:02.88,0:00:03.00,Sub,,0,0,0,,{\an5\pos(360,832)}DEL TERREMOTO,
+Dialogue: 5,0:00:02.56,0:00:02.64,Sub,,0,0,0,,{\an5\pos(360,832)}LA EXPERIENCIA
+Dialogue: 5,0:00:02.64,0:00:02.72,Sub,,0,0,0,,{\an5\pos(360,832)}DEL TERREMOTO,
+Dialogue: 5,0:00:02.72,0:00:02.92,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}DEL{\c&HFFFFFF&} TERREMOTO,
+Dialogue: 5,0:00:02.92,0:00:03.00,Sub,,0,0,0,,{\an5\pos(360,832)}DEL TERREMOTO,
 Dialogue: 5,0:00:03.00,0:00:03.64,Sub,,0,0,0,,{\an5\pos(360,832)}DEL {\c&H0000D4FF&}TERREMOTO,{\c&HFFFFFF&}
 Dialogue: 5,0:00:03.64,0:00:03.68,Sub,,0,0,0,,{\an5\pos(360,832)}DE LOS DOS
 Dialogue: 5,0:00:03.68,0:00:03.84,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}DE{\c&HFFFFFF&} LOS DOS
@@ -89,8 +89,8 @@ Dialogue: 5,0:00:16.32,0:00:16.68,Sub,,0,0,0,,{\an5\pos(360,832)}CÍNICA LA {\c&
 Dialogue: 5,0:00:16.68,0:00:16.76,Sub,,0,0,0,,{\an5\pos(360,832)}CÍNICA LA REACCIÓN
 Dialogue: 5,0:00:16.76,0:00:16.80,Sub,,0,0,0,,{\an5\pos(360,832)}DEL RÉGIMEN,
 Dialogue: 5,0:00:16.80,0:00:16.92,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}DEL{\c&HFFFFFF&} RÉGIMEN,
-Dialogue: 5,0:00:16.92,0:00:17.44,Sub,,0,0,0,,{\an5\pos(360,832)}DEL {\c&H0000D4FF&}RÉGIMEN,{\c&HFFFFFF&}
-Dialogue: 5,0:00:17.44,0:00:17.72,Sub,,0,0,0,,{\an5\pos(360,832)}DEL RÉGIMEN,
+Dialogue: 5,0:00:16.92,0:00:17.48,Sub,,0,0,0,,{\an5\pos(360,832)}DEL {\c&H0000D4FF&}RÉGIMEN,{\c&HFFFFFF&}
+Dialogue: 5,0:00:17.48,0:00:17.76,Sub,,0,0,0,,{\an5\pos(360,832)}DEL RÉGIMEN,
 Dialogue: 5,0:00:17.80,0:00:17.84,Sub,,0,0,0,,{\an5\pos(360,832)}QUE EL PAÍS
 Dialogue: 5,0:00:17.84,0:00:17.96,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}QUE{\c&HFFFFFF&} EL PAÍS
 Dialogue: 5,0:00:17.96,0:00:18.16,Sub,,0,0,0,,{\an5\pos(360,832)}QUE {\c&H0000D4FF&}EL{\c&HFFFFFF&} PAÍS
@@ -133,17 +133,17 @@ Dialogue: 5,0:00:26.28,0:00:26.56,Sub,,0,0,0,,{\an5\pos(360,832)}UNOS A OTROS
 Dialogue: 5,0:00:27.40,0:00:27.44,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE AL FINAL
 Dialogue: 5,0:00:27.44,0:00:27.60,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}Y{\c&HFFFFFF&} QUE AL FINAL
 Dialogue: 5,0:00:27.60,0:00:27.64,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE AL FINAL
-Dialogue: 5,0:00:27.64,0:00:27.76,Sub,,0,0,0,,{\an5\pos(360,832)}Y {\c&H0000D4FF&}QUE{\c&HFFFFFF&} AL FINAL
-Dialogue: 5,0:00:27.76,0:00:28.04,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE {\c&H0000D4FF&}AL{\c&HFFFFFF&} FINAL
-Dialogue: 5,0:00:28.04,0:00:28.16,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE AL FINAL
-Dialogue: 5,0:00:28.16,0:00:28.64,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE AL {\c&H0000D4FF&}FINAL{\c&HFFFFFF&}
-Dialogue: 5,0:00:28.64,0:00:28.68,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE AL FINAL
-Dialogue: 5,0:00:28.68,0:00:28.72,Sub,,0,0,0,,{\an5\pos(360,832)}EL CIUDADANO
+Dialogue: 5,0:00:27.64,0:00:27.88,Sub,,0,0,0,,{\an5\pos(360,832)}Y {\c&H0000D4FF&}QUE{\c&HFFFFFF&} AL FINAL
+Dialogue: 5,0:00:27.88,0:00:28.00,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE AL FINAL
+Dialogue: 5,0:00:28.00,0:00:28.24,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE {\c&H0000D4FF&}AL{\c&HFFFFFF&} FINAL
+Dialogue: 5,0:00:28.24,0:00:28.44,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE AL FINAL
+Dialogue: 5,0:00:28.44,0:00:28.72,Sub,,0,0,0,,{\an5\pos(360,832)}Y QUE AL {\c&H0000D4FF&}FINAL{\c&HFFFFFF&}
 Dialogue: 5,0:00:28.72,0:00:28.92,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}EL{\c&HFFFFFF&} CIUDADANO
 Dialogue: 5,0:00:28.92,0:00:29.08,Sub,,0,0,0,,{\an5\pos(360,832)}EL CIUDADANO
 Dialogue: 5,0:00:29.08,0:00:29.76,Sub,,0,0,0,,{\an5\pos(360,832)}EL {\c&H0000D4FF&}CIUDADANO{\c&HFFFFFF&}
-Dialogue: 5,0:00:29.76,0:00:29.96,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}SE{\c&HFFFFFF&} IMPONE INCLUSO
-Dialogue: 5,0:00:29.96,0:00:30.20,Sub,,0,0,0,,{\an5\pos(360,832)}SE IMPONE INCLUSO
+Dialogue: 5,0:00:29.76,0:00:29.80,Sub,,0,0,0,,{\an5\pos(360,832)}SE IMPONE INCLUSO
+Dialogue: 5,0:00:29.80,0:00:30.08,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}SE{\c&HFFFFFF&} IMPONE INCLUSO
+Dialogue: 5,0:00:30.08,0:00:30.20,Sub,,0,0,0,,{\an5\pos(360,832)}SE IMPONE INCLUSO
 Dialogue: 5,0:00:30.20,0:00:30.44,Sub,,0,0,0,,{\an5\pos(360,832)}SE {\c&H0000D4FF&}IMPONE{\c&HFFFFFF&} INCLUSO
 Dialogue: 5,0:00:30.44,0:00:30.60,Sub,,0,0,0,,{\an5\pos(360,832)}SE IMPONE INCLUSO
 Dialogue: 5,0:00:30.60,0:00:31.20,Sub,,0,0,0,,{\an5\pos(360,832)}SE IMPONE {\c&H0000D4FF&}INCLUSO{\c&HFFFFFF&}
@@ -156,13 +156,12 @@ Dialogue: 5,0:00:32.40,0:00:32.44,Sub,,0,0,0,,{\an5\pos(360,832)}LOS OBSTÁCULOS
 Dialogue: 5,0:00:32.44,0:00:32.60,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}LOS{\c&HFFFFFF&} OBSTÁCULOS
 Dialogue: 5,0:00:32.60,0:00:32.92,Sub,,0,0,0,,{\an5\pos(360,832)}LOS {\c&H0000D4FF&}OBSTÁCULOS{\c&HFFFFFF&}
 Dialogue: 5,0:00:32.92,0:00:32.96,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE EL RÉGIMEN.
-Dialogue: 5,0:00:32.96,0:00:33.08,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}QUE{\c&HFFFFFF&} PONE EL RÉGIMEN.
-Dialogue: 5,0:00:33.08,0:00:33.12,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE EL RÉGIMEN.
-Dialogue: 5,0:00:33.12,0:00:33.44,Sub,,0,0,0,,{\an5\pos(360,832)}QUE {\c&H0000D4FF&}PONE{\c&HFFFFFF&} EL RÉGIMEN.
-Dialogue: 5,0:00:33.44,0:00:33.48,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE EL RÉGIMEN.
-Dialogue: 5,0:00:33.48,0:00:33.64,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE {\c&H0000D4FF&}EL{\c&HFFFFFF&} RÉGIMEN.
-Dialogue: 5,0:00:33.64,0:00:34.00,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE EL {\c&H0000D4FF&}RÉGIMEN.{\c&HFFFFFF&}
-Dialogue: 5,0:00:34.00,0:00:34.28,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE EL RÉGIMEN.
+Dialogue: 5,0:00:32.96,0:00:33.16,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}QUE{\c&HFFFFFF&} PONE EL RÉGIMEN.
+Dialogue: 5,0:00:33.16,0:00:33.44,Sub,,0,0,0,,{\an5\pos(360,832)}QUE {\c&H0000D4FF&}PONE{\c&HFFFFFF&} EL RÉGIMEN.
+Dialogue: 5,0:00:33.44,0:00:33.52,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE EL RÉGIMEN.
+Dialogue: 5,0:00:33.52,0:00:33.64,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE {\c&H0000D4FF&}EL{\c&HFFFFFF&} RÉGIMEN.
+Dialogue: 5,0:00:33.64,0:00:34.04,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE EL {\c&H0000D4FF&}RÉGIMEN.{\c&HFFFFFF&}
+Dialogue: 5,0:00:34.04,0:00:34.28,Sub,,0,0,0,,{\an5\pos(360,832)}QUE PONE EL RÉGIMEN.
 Dialogue: 5,0:00:34.28,0:00:34.32,Sub,,0,0,0,,{\an5\pos(360,832)}PERO AHÍ
 Dialogue: 5,0:00:34.32,0:00:34.44,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}PERO{\c&HFFFFFF&} AHÍ
 Dialogue: 5,0:00:34.44,0:00:34.64,Sub,,0,0,0,,{\an5\pos(360,832)}PERO {\c&H0000D4FF&}AHÍ{\c&HFFFFFF&}
@@ -185,15 +184,14 @@ Dialogue: 5,0:00:38.76,0:00:38.92,Sub,,0,0,0,,{\an5\pos(360,832)}Y SÍ HA TRAÍD
 Dialogue: 5,0:00:38.92,0:00:39.04,Sub,,0,0,0,,{\an5\pos(360,832)}Y {\c&H0000D4FF&}SÍ{\c&HFFFFFF&} HA TRAÍDO,
 Dialogue: 5,0:00:39.04,0:00:39.20,Sub,,0,0,0,,{\an5\pos(360,832)}Y SÍ {\c&H0000D4FF&}HA{\c&HFFFFFF&} TRAÍDO,
 Dialogue: 5,0:00:39.20,0:00:39.24,Sub,,0,0,0,,{\an5\pos(360,832)}Y SÍ HA TRAÍDO,
-Dialogue: 5,0:00:39.24,0:00:39.56,Sub,,0,0,0,,{\an5\pos(360,832)}Y SÍ HA {\c&H0000D4FF&}TRAÍDO,{\c&HFFFFFF&}
-Dialogue: 5,0:00:39.56,0:00:39.60,Sub,,0,0,0,,{\an5\pos(360,832)}DESDE LUEGO,
-Dialogue: 5,0:00:39.60,0:00:39.92,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}DESDE{\c&HFFFFFF&} LUEGO,
+Dialogue: 5,0:00:39.24,0:00:39.60,Sub,,0,0,0,,{\an5\pos(360,832)}Y SÍ HA {\c&H0000D4FF&}TRAÍDO,{\c&HFFFFFF&}
+Dialogue: 5,0:00:39.60,0:00:39.64,Sub,,0,0,0,,{\an5\pos(360,832)}DESDE LUEGO,
+Dialogue: 5,0:00:39.64,0:00:39.92,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}DESDE{\c&HFFFFFF&} LUEGO,
 Dialogue: 5,0:00:39.92,0:00:40.24,Sub,,0,0,0,,{\an5\pos(360,832)}DESDE {\c&H0000D4FF&}LUEGO,{\c&HFFFFFF&}
 Dialogue: 5,0:00:40.24,0:00:40.40,Sub,,0,0,0,,{\an5\pos(360,832)}DESDE LUEGO,
 Dialogue: 5,0:00:40.40,0:00:40.44,Sub,,0,0,0,,{\an5\pos(360,832)}UNA CONCIENCIA
 Dialogue: 5,0:00:40.44,0:00:40.72,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}UNA{\c&HFFFFFF&} CONCIENCIA
-Dialogue: 5,0:00:40.72,0:00:41.52,Sub,,0,0,0,,{\an5\pos(360,832)}UNA {\c&H0000D4FF&}CONCIENCIA{\c&HFFFFFF&}
-Dialogue: 5,0:00:41.52,0:00:41.56,Sub,,0,0,0,,{\an5\pos(360,832)}UNA CONCIENCIA
+Dialogue: 5,0:00:40.72,0:00:41.56,Sub,,0,0,0,,{\an5\pos(360,832)}UNA {\c&H0000D4FF&}CONCIENCIA{\c&HFFFFFF&}
 Dialogue: 5,0:00:41.56,0:00:41.60,Sub,,0,0,0,,{\an5\pos(360,832)}MÁS PROFUNDA
 Dialogue: 5,0:00:41.60,0:00:41.88,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}MÁS{\c&HFFFFFF&} PROFUNDA
 Dialogue: 5,0:00:41.88,0:00:42.40,Sub,,0,0,0,,{\an5\pos(360,832)}MÁS PROFUNDA
@@ -223,29 +221,28 @@ Dialogue: 5,0:00:46.24,0:00:46.40,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}
 Dialogue: 5,0:00:46.40,0:00:46.48,Sub,,0,0,0,,{\an5\pos(360,832)}DE CONCRETAR
 Dialogue: 5,0:00:46.48,0:00:46.92,Sub,,0,0,0,,{\an5\pos(360,832)}DE {\c&H0000D4FF&}CONCRETAR{\c&HFFFFFF&}
 Dialogue: 5,0:00:46.92,0:00:46.96,Sub,,0,0,0,,{\an5\pos(360,832)}LA TRANSICIÓN
-Dialogue: 5,0:00:46.96,0:00:47.12,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}LA{\c&HFFFFFF&} TRANSICIÓN
-Dialogue: 5,0:00:47.12,0:00:47.72,Sub,,0,0,0,,{\an5\pos(360,832)}LA TRANSICIÓN
+Dialogue: 5,0:00:46.96,0:00:47.16,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}LA{\c&HFFFFFF&} TRANSICIÓN
+Dialogue: 5,0:00:47.16,0:00:47.72,Sub,,0,0,0,,{\an5\pos(360,832)}LA TRANSICIÓN
 Dialogue: 5,0:00:47.72,0:00:48.16,Sub,,0,0,0,,{\an5\pos(360,832)}LA {\c&H0000D4FF&}TRANSICIÓN{\c&HFFFFFF&}
 Dialogue: 5,0:00:48.16,0:00:48.20,Sub,,0,0,0,,{\an5\pos(360,832)}LA TRANSICIÓN
 Dialogue: 5,0:00:48.20,0:00:48.24,Sub,,0,0,0,,{\an5\pos(360,832)}Y RECONSTRUIR
 Dialogue: 5,0:00:48.24,0:00:48.36,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}Y{\c&HFFFFFF&} RECONSTRUIR
 Dialogue: 5,0:00:48.36,0:00:48.88,Sub,,0,0,0,,{\an5\pos(360,832)}Y {\c&H0000D4FF&}RECONSTRUIR{\c&HFFFFFF&}
 Dialogue: 5,0:00:48.88,0:00:49.00,Sub,,0,0,0,,{\an5\pos(360,832)}Y RECONSTRUIR
-Dialogue: 5,0:00:49.00,0:00:49.04,Sub,,0,0,0,,{\an5\pos(360,832)}UNA GRAN NACIÓN
-Dialogue: 5,0:00:49.04,0:00:49.32,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}UNA{\c&HFFFFFF&} GRAN NACIÓN
-Dialogue: 5,0:00:49.32,0:00:49.44,Sub,,0,0,0,,{\an5\pos(360,832)}UNA {\c&H0000D4FF&}GRAN{\c&HFFFFFF&} NACIÓN
-Dialogue: 5,0:00:49.44,0:00:50.00,Sub,,0,0,0,,{\an5\pos(360,832)}UNA GRAN {\c&H0000D4FF&}NACIÓN{\c&HFFFFFF&}
-Dialogue: 5,0:00:50.00,0:00:50.32,Sub,,0,0,0,,{\an5\pos(360,832)}UNA GRAN NACIÓN
-Dialogue: 5,0:00:50.60,0:00:50.64,Sub,,0,0,0,,{\an5\pos(360,832)}REQUIERE
-Dialogue: 5,0:00:50.64,0:00:50.76,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}REQUIERE{\c&HFFFFFF&}
-Dialogue: 5,0:00:50.76,0:00:50.80,Sub,,0,0,0,,{\an5\pos(360,832)}REQUIERE
+Dialogue: 5,0:00:49.00,0:00:49.04,Sub,,0,0,0,,{\an5\pos(360,832)}UNA GRAN
+Dialogue: 5,0:00:49.04,0:00:49.32,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}UNA{\c&HFFFFFF&} GRAN
+Dialogue: 5,0:00:49.32,0:00:49.40,Sub,,0,0,0,,{\an5\pos(360,832)}UNA {\c&H0000D4FF&}GRAN{\c&HFFFFFF&}
+Dialogue: 5,0:00:49.40,0:00:49.44,Sub,,0,0,0,,{\an5\pos(360,832)}NACIÓN REQUIERE
+Dialogue: 5,0:00:49.44,0:00:49.72,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}NACIÓN{\c&HFFFFFF&} REQUIERE
+Dialogue: 5,0:00:49.72,0:00:50.04,Sub,,0,0,0,,{\an5\pos(360,832)}NACIÓN REQUIERE
+Dialogue: 5,0:00:50.04,0:00:50.76,Sub,,0,0,0,,{\an5\pos(360,832)}NACIÓN {\c&H0000D4FF&}REQUIERE{\c&HFFFFFF&}
+Dialogue: 5,0:00:50.76,0:00:50.80,Sub,,0,0,0,,{\an5\pos(360,832)}NACIÓN REQUIERE
 Dialogue: 5,0:00:50.80,0:00:50.84,Sub,,0,0,0,,{\an5\pos(360,832)}DE UNA NACIÓN UNIDA,
 Dialogue: 5,0:00:50.84,0:00:50.96,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}DE{\c&HFFFFFF&} UNA NACIÓN UNIDA,
-Dialogue: 5,0:00:50.96,0:00:51.20,Sub,,0,0,0,,{\an5\pos(360,832)}DE {\c&H0000D4FF&}UNA{\c&HFFFFFF&} NACIÓN UNIDA,
-Dialogue: 5,0:00:51.20,0:00:51.52,Sub,,0,0,0,,{\an5\pos(360,832)}DE UNA {\c&H0000D4FF&}NACIÓN{\c&HFFFFFF&} UNIDA,
-Dialogue: 5,0:00:51.52,0:00:51.56,Sub,,0,0,0,,{\an5\pos(360,832)}DE UNA NACIÓN UNIDA,
-Dialogue: 5,0:00:51.56,0:00:52.04,Sub,,0,0,0,,{\an5\pos(360,832)}DE UNA NACIÓN {\c&H0000D4FF&}UNIDA,{\c&HFFFFFF&}
-Dialogue: 5,0:00:52.04,0:00:52.36,Sub,,0,0,0,,{\an5\pos(360,832)}DE UNA NACIÓN UNIDA,
+Dialogue: 5,0:00:50.96,0:00:51.28,Sub,,0,0,0,,{\an5\pos(360,832)}DE {\c&H0000D4FF&}UNA{\c&HFFFFFF&} NACIÓN UNIDA,
+Dialogue: 5,0:00:51.28,0:00:51.64,Sub,,0,0,0,,{\an5\pos(360,832)}DE UNA {\c&H0000D4FF&}NACIÓN{\c&HFFFFFF&} UNIDA,
+Dialogue: 5,0:00:51.64,0:00:52.12,Sub,,0,0,0,,{\an5\pos(360,832)}DE UNA NACIÓN {\c&H0000D4FF&}UNIDA,{\c&HFFFFFF&}
+Dialogue: 5,0:00:52.12,0:00:52.44,Sub,,0,0,0,,{\an5\pos(360,832)}DE UNA NACIÓN UNIDA,
 Dialogue: 5,0:00:53.36,0:00:53.40,Sub,,0,0,0,,{\an5\pos(360,832)}UNIDA AL MARGEN DE
 Dialogue: 5,0:00:53.40,0:00:53.84,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}UNIDA{\c&HFFFFFF&} AL MARGEN DE
 Dialogue: 5,0:00:53.84,0:00:54.00,Sub,,0,0,0,,{\an5\pos(360,832)}UNIDA {\c&H0000D4FF&}AL{\c&HFFFFFF&} MARGEN DE
@@ -265,16 +262,16 @@ Dialogue: 5,0:00:56.64,0:00:56.72,Sub,,0,0,0,,{\an5\pos(360,832)}SER ALGUNAS
 Dialogue: 5,0:00:56.72,0:00:57.20,Sub,,0,0,0,,{\an5\pos(360,832)}SER {\c&H0000D4FF&}ALGUNAS{\c&HFFFFFF&}
 Dialogue: 5,0:00:57.20,0:00:57.24,Sub,,0,0,0,,{\an5\pos(360,832)}SER ALGUNAS
 Dialogue: 5,0:00:57.24,0:00:57.28,Sub,,0,0,0,,{\an5\pos(360,832)}TENTACIONES,
-Dialogue: 5,0:00:57.28,0:00:58.08,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}TENTACIONES,{\c&HFFFFFF&}
-Dialogue: 5,0:00:58.08,0:00:58.16,Sub,,0,0,0,,{\an5\pos(360,832)}TENTACIONES,
-Dialogue: 5,0:00:58.16,0:00:58.20,Sub,,0,0,0,,{\an5\pos(360,832)}PROVOCACIONES
-Dialogue: 5,0:00:58.20,0:00:59.00,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}PROVOCACIONES{\c&HFFFFFF&}
-Dialogue: 5,0:00:59.00,0:00:59.04,Sub,,0,0,0,,{\an5\pos(360,832)}O TRAICIONES
-Dialogue: 5,0:00:59.04,0:00:59.28,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}O{\c&HFFFFFF&} TRAICIONES
-Dialogue: 5,0:00:59.28,0:00:59.32,Sub,,0,0,0,,{\an5\pos(360,832)}O TRAICIONES
-Dialogue: 5,0:00:59.32,0:00:59.60,Sub,,0,0,0,,{\an5\pos(360,832)}O {\c&H0000D4FF&}TRAICIONES{\c&HFFFFFF&}
-Dialogue: 5,0:00:59.60,0:00:59.68,Sub,,0,0,0,,{\an5\pos(360,832)}QUE SIEMPRE OCURREN
-Dialogue: 5,0:00:59.68,0:00:59.84,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}QUE{\c&HFFFFFF&} SIEMPRE OCURREN
+Dialogue: 5,0:00:57.28,0:00:57.84,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}TENTACIONES,{\c&HFFFFFF&}
+Dialogue: 5,0:00:57.84,0:00:57.88,Sub,,0,0,0,,{\an5\pos(360,832)}PROVOCACIONES
+Dialogue: 5,0:00:57.88,0:00:58.60,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}PROVOCACIONES{\c&HFFFFFF&}
+Dialogue: 5,0:00:58.60,0:00:58.72,Sub,,0,0,0,,{\an5\pos(360,832)}PROVOCACIONES
+Dialogue: 5,0:00:58.72,0:00:58.76,Sub,,0,0,0,,{\an5\pos(360,832)}O TRAICIONES
+Dialogue: 5,0:00:58.76,0:00:58.88,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}O{\c&HFFFFFF&} TRAICIONES
+Dialogue: 5,0:00:58.88,0:00:59.52,Sub,,0,0,0,,{\an5\pos(360,832)}O {\c&H0000D4FF&}TRAICIONES{\c&HFFFFFF&}
+Dialogue: 5,0:00:59.52,0:00:59.56,Sub,,0,0,0,,{\an5\pos(360,832)}O TRAICIONES
+Dialogue: 5,0:00:59.56,0:00:59.60,Sub,,0,0,0,,{\an5\pos(360,832)}QUE SIEMPRE OCURREN
+Dialogue: 5,0:00:59.60,0:00:59.84,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}QUE{\c&HFFFFFF&} SIEMPRE OCURREN
 Dialogue: 5,0:00:59.84,0:01:00.16,Sub,,0,0,0,,{\an5\pos(360,832)}QUE SIEMPRE OCURREN
 Dialogue: 5,0:01:00.16,0:01:00.32,Sub,,0,0,0,,{\an5\pos(360,832)}QUE {\c&H0000D4FF&}SIEMPRE{\c&HFFFFFF&} OCURREN
 Dialogue: 5,0:01:00.32,0:01:00.56,Sub,,0,0,0,,{\an5\pos(360,832)}QUE SIEMPRE {\c&H0000D4FF&}OCURREN{\c&HFFFFFF&}
@@ -282,8 +279,8 @@ Dialogue: 5,0:01:00.56,0:01:00.60,Sub,,0,0,0,,{\an5\pos(360,832)}QUE SIEMPRE OCU
 Dialogue: 5,0:01:00.60,0:01:00.64,Sub,,0,0,0,,{\an5\pos(360,832)}EN ESTOS PROCESOS,
 Dialogue: 5,0:01:00.64,0:01:00.88,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}EN{\c&HFFFFFF&} ESTOS PROCESOS,
 Dialogue: 5,0:01:00.88,0:01:01.16,Sub,,0,0,0,,{\an5\pos(360,832)}EN {\c&H0000D4FF&}ESTOS{\c&HFFFFFF&} PROCESOS,
-Dialogue: 5,0:01:01.16,0:01:01.28,Sub,,0,0,0,,{\an5\pos(360,832)}EN ESTOS PROCESOS,
-Dialogue: 5,0:01:01.28,0:01:01.68,Sub,,0,0,0,,{\an5\pos(360,832)}EN ESTOS {\c&H0000D4FF&}PROCESOS,{\c&HFFFFFF&}
+Dialogue: 5,0:01:01.16,0:01:01.24,Sub,,0,0,0,,{\an5\pos(360,832)}EN ESTOS PROCESOS,
+Dialogue: 5,0:01:01.24,0:01:01.68,Sub,,0,0,0,,{\an5\pos(360,832)}EN ESTOS {\c&H0000D4FF&}PROCESOS,{\c&HFFFFFF&}
 Dialogue: 5,0:01:01.68,0:01:01.72,Sub,,0,0,0,,{\an5\pos(360,832)}MUCHO MÁS CUANDO
 Dialogue: 5,0:01:01.72,0:01:01.96,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}MUCHO{\c&HFFFFFF&} MÁS CUANDO
 Dialogue: 5,0:01:01.96,0:01:02.04,Sub,,0,0,0,,{\an5\pos(360,832)}MUCHO MÁS CUANDO
@@ -295,12 +292,12 @@ Dialogue: 5,0:01:02.44,0:01:02.60,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}
 Dialogue: 5,0:01:02.60,0:01:02.72,Sub,,0,0,0,,{\an5\pos(360,832)}HAY TANTO DINERO
 Dialogue: 5,0:01:02.72,0:01:02.96,Sub,,0,0,0,,{\an5\pos(360,832)}HAY {\c&H0000D4FF&}TANTO{\c&HFFFFFF&} DINERO
 Dialogue: 5,0:01:02.96,0:01:03.00,Sub,,0,0,0,,{\an5\pos(360,832)}HAY TANTO DINERO
-Dialogue: 5,0:01:03.00,0:01:03.28,Sub,,0,0,0,,{\an5\pos(360,832)}HAY TANTO {\c&H0000D4FF&}DINERO{\c&HFFFFFF&}
-Dialogue: 5,0:01:03.28,0:01:03.32,Sub,,0,0,0,,{\an5\pos(360,832)}COMO EL QUE
-Dialogue: 5,0:01:03.32,0:01:03.76,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}COMO{\c&HFFFFFF&} EL QUE
+Dialogue: 5,0:01:03.00,0:01:03.32,Sub,,0,0,0,,{\an5\pos(360,832)}HAY TANTO {\c&H0000D4FF&}DINERO{\c&HFFFFFF&}
+Dialogue: 5,0:01:03.32,0:01:03.36,Sub,,0,0,0,,{\an5\pos(360,832)}COMO EL QUE
+Dialogue: 5,0:01:03.36,0:01:03.76,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}COMO{\c&HFFFFFF&} EL QUE
 Dialogue: 5,0:01:03.76,0:01:04.40,Sub,,0,0,0,,{\an5\pos(360,832)}COMO EL QUE
-Dialogue: 5,0:01:04.40,0:01:04.56,Sub,,0,0,0,,{\an5\pos(360,832)}COMO {\c&H0000D4FF&}EL{\c&HFFFFFF&} QUE
-Dialogue: 5,0:01:04.56,0:01:04.64,Sub,,0,0,0,,{\an5\pos(360,832)}COMO EL QUE
+Dialogue: 5,0:01:04.40,0:01:04.60,Sub,,0,0,0,,{\an5\pos(360,832)}COMO {\c&H0000D4FF&}EL{\c&HFFFFFF&} QUE
+Dialogue: 5,0:01:04.60,0:01:04.64,Sub,,0,0,0,,{\an5\pos(360,832)}COMO EL QUE
 Dialogue: 5,0:01:04.64,0:01:04.72,Sub,,0,0,0,,{\an5\pos(360,832)}COMO EL {\c&H0000D4FF&}QUE{\c&HFFFFFF&}
 Dialogue: 5,0:01:04.72,0:01:04.80,Sub,,0,0,0,,{\an5\pos(360,832)}HA EXISTIDO Y TODAVÍA
 Dialogue: 5,0:01:04.80,0:01:04.96,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}HA{\c&HFFFFFF&} EXISTIDO Y TODAVÍA
@@ -314,4 +311,4 @@ Dialogue: 5,0:01:06.36,0:01:06.40,Sub,,0,0,0,,{\an5\pos(360,832)}HAY EN VENEZUEL
 Dialogue: 5,0:01:06.40,0:01:06.56,Sub,,0,0,0,,{\an5\pos(360,832)}{\c&H0000D4FF&}HAY{\c&HFFFFFF&} EN VENEZUELA.
 Dialogue: 5,0:01:06.56,0:01:06.68,Sub,,0,0,0,,{\an5\pos(360,832)}HAY {\c&H0000D4FF&}EN{\c&HFFFFFF&} VENEZUELA.
 Dialogue: 5,0:01:06.68,0:01:06.96,Sub,,0,0,0,,{\an5\pos(360,832)}HAY EN {\c&H0000D4FF&}VENEZUELA.{\c&HFFFFFF&}
-Dialogue: 5,0:01:06.96,0:01:07.04,Sub,,0,0,0,,{\an5\pos(360,832)}HAY EN VENEZUELA.
+Dialogue: 5,0:01:06.96,0:01:07.56,Sub,,0,0,0,,{\an5\pos(360,832)}HAY EN VENEZUELA.
