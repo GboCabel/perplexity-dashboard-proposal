@@ -1,0 +1,260 @@
+{
+ "pieza": "mcm_entrevista",
+ "fps": 25,
+ "res": "720x1280",
+ "shots": [
+  {
+   "n": 1,
+   "t_in": 0.0,
+   "t_out": 3.0,
+   "clip": "mcm_b",
+   "src_in": 60.6,
+   "src_out": 63.6,
+   "crop_x_center": 560,
+   "ken_burns_max": 1.08,
+   "desc": "MCM con bandera + rótulo"
+  },
+  {
+   "n": 2,
+   "t_in": 3.0,
+   "t_out": 5.85,
+   "clip": "mcm_b",
+   "src_in": 41.0,
+   "src_out": 43.85,
+   "crop_x_center": 600,
+   "ken_burns_max": 1.08,
+   "desc": "escala avenida"
+  },
+  {
+   "n": 3,
+   "t_in": 5.85,
+   "t_out": 9.35,
+   "clip": "mcm_b",
+   "src_in": 24.0,
+   "src_out": 27.5,
+   "crop_x_center": 800,
+   "ken_burns_max": 1.08,
+   "desc": "mar de linternas"
+  },
+  {
+   "n": 4,
+   "t_in": 9.35,
+   "t_out": 11.85,
+   "clip": "mcm_a",
+   "src_in": 9.5,
+   "src_out": 12.0,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "multitud con bandera"
+  },
+  {
+   "n": 5,
+   "t_in": 11.85,
+   "t_out": 15.77,
+   "clip": "mcm_b",
+   "src_in": 44.5,
+   "src_out": 48.42,
+   "crop_x_center": 600,
+   "ken_burns_max": 1.08,
+   "desc": "escala avenida"
+  },
+  {
+   "n": 6,
+   "t_in": 15.77,
+   "t_out": 17.26,
+   "clip": "convzlacomando",
+   "src_in": 13.3,
+   "src_out": 14.79,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "manos y flashes"
+  },
+  {
+   "n": 7,
+   "t_in": 17.26,
+   "t_out": 20.38,
+   "clip": "mcm_b",
+   "src_in": 28.0,
+   "src_out": 31.12,
+   "crop_x_center": 800,
+   "ken_burns_max": 1.08,
+   "desc": "linternas"
+  },
+  {
+   "n": 8,
+   "t_in": 20.38,
+   "t_out": 24.0,
+   "clip": "mcm_a",
+   "src_in": 20.0,
+   "src_out": 23.62,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "MCM da la mano (unos a otros)"
+  },
+  {
+   "n": 9,
+   "t_in": 24.0,
+   "t_out": 26.78,
+   "clip": "convzlacomando",
+   "src_in": 5.3,
+   "src_out": 8.08,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "MCM aplaude y tira besos"
+  },
+  {
+   "n": 10,
+   "t_in": 26.78,
+   "t_out": 30.28,
+   "clip": "mcm_b",
+   "src_in": 49.0,
+   "src_out": 52.5,
+   "crop_x_center": 600,
+   "ken_burns_max": 1.08,
+   "desc": "escala (el ciudadano se impone)"
+  },
+  {
+   "n": 11,
+   "t_in": 30.28,
+   "t_out": 34.12,
+   "clip": "mcm_b",
+   "src_in": 15.5,
+   "src_out": 19.34,
+   "crop_x_center": 760,
+   "ken_burns_max": 1.08,
+   "desc": "linternas, evitar borde izq."
+  },
+  {
+   "n": 12,
+   "t_in": 34.12,
+   "t_out": 36.12,
+   "clip": "mcm_a",
+   "src_in": 12.0,
+   "src_out": 14.0,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "MCM de espaldas frente al peaje"
+  },
+  {
+   "n": 13,
+   "t_in": 36.12,
+   "t_out": 38.05,
+   "clip": "mcm_a",
+   "src_in": 3.5,
+   "src_out": 5.43,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "MCM extiende el brazo"
+  },
+  {
+   "n": 14,
+   "t_in": 38.05,
+   "t_out": 42.55,
+   "clip": "mcm_b",
+   "src_in": 31.5,
+   "src_out": 36.0,
+   "crop_x_center": 800,
+   "ken_burns_max": 1.08,
+   "desc": "linternas"
+  },
+  {
+   "n": 15,
+   "t_in": 42.55,
+   "t_out": 45.79,
+   "clip": "mcm_a",
+   "src_in": 0.0,
+   "src_out": 3.24,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "MCM sonríe bajo 'A CARACAS'"
+  },
+  {
+   "n": 16,
+   "t_in": 45.79,
+   "t_out": 48.43,
+   "clip": "mcm_a",
+   "src_in": 23.62,
+   "src_out": 26.26,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "MCM en camioneta (continúa #8)"
+  },
+  {
+   "n": 17,
+   "t_in": 48.43,
+   "t_out": 50.03,
+   "clip": "convzlacomando",
+   "src_in": 1.04,
+   "src_out": 2.64,
+   "crop_x_center": null,
+   "ken_burns_max": 1.08,
+   "desc": "fuegos artificiales (gran nación)"
+  },
+  {
+   "n": 18,
+   "t_in": 50.03,
+   "t_out": 53.87,
+   "clip": "mcm_b",
+   "src_in": 53.0,
+   "src_out": 56.84,
+   "crop_x_center": 600,
+   "ken_burns_max": 1.08,
+   "desc": "escala avenida"
+  },
+  {
+   "n": 19,
+   "t_in": 53.87,
+   "t_out": 56.87,
+   "clip": "mcm_b",
+   "src_in": 0.0,
+   "src_out": 3.0,
+   "crop_x_center": 640,
+   "ken_burns_max": 1.08,
+   "desc": "gran angular caravana"
+  },
+  {
+   "n": 20,
+   "t_in": 56.87,
+   "t_out": 59.94,
+   "clip": "mcm_b",
+   "src_in": 56.9,
+   "src_out": 59.97,
+   "crop_x_center": 600,
+   "ken_burns_max": 1.08,
+   "desc": "escala avenida"
+  },
+  {
+   "n": 21,
+   "t_in": 59.94,
+   "t_out": 61.74,
+   "clip": "mcm_b",
+   "src_in": 10.0,
+   "src_out": 11.8,
+   "crop_x_center": 640,
+   "ken_burns_max": 1.08,
+   "desc": "brazos en alto"
+  },
+  {
+   "n": 22,
+   "t_in": 61.74,
+   "t_out": 64.34,
+   "clip": "mcm_b",
+   "src_in": 19.4,
+   "src_out": 22.0,
+   "crop_x_center": 760,
+   "ken_burns_max": 1.08,
+   "desc": "linternas"
+  },
+  {
+   "n": 23,
+   "t_in": 64.34,
+   "t_out": 67.04,
+   "clip": "mcm_b",
+   "src_in": 63.3,
+   "src_out": 66.0,
+   "crop_x_center": 560,
+   "ken_burns_max": 1.08,
+   "desc": "cierre: MCM con bandera (callback)"
+  }
+ ]
+}
