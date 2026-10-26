@@ -1,0 +1,11 @@
+[
+  {"start":0.0,"end":1.0,"desc":"Fuegos artificiales sobre edificios, plano contrapicado nocturno","calidad":"regular","motivo":"Muy corto (corte de escena a 1.04 s); sirve como flash de apertura"},
+  {"start":1.04,"end":3.8,"desc":"Fuegos artificiales y humo sobre multitud con banderas, edificios de fondo","calidad":"buena","motivo":"Movimiento moderado, buen ambiente de celebración; carteles chicos en edificios ilegibles"},
+  {"start":3.8,"end":5.3,"desc":"Paneo desde el vehículo hacia la multitud con banderas tricolor","calidad":"regular","motivo":"Paneo rápido (pico de movimiento ~4-5 s), utilizable solo como transición"},
+  {"start":5.3,"end":8.8,"desc":"María Corina Machado de pie en el vehículo, sonríe, aplaude y tira besos a la multitud; plano medio estable","calidad":"buena","motivo":"Tramo más estable del clip (menor movimiento), sujeto claro y bien expuesto para noche; ideal para Ken Burns"},
+  {"start":8.8,"end":10.0,"desc":"Barrido brusco de cámara desde MCM hacia la multitud","calidad":"mala","motivo":"Movida brusca / whip pan con desenfoque de movimiento"},
+  {"start":10.0,"end":17.5,"desc":"Multitud estira manos hacia el vehículo, celulares con flash, humo y luces de autos","calidad":"regular","motivo":"Cámara en mano muy movida, manos en primer plano y algo de motion blur; usar fragmentos cortos de 1-2 s (mejor 13-15 s)"},
+  {"start":17.5,"end":19.8,"desc":"Personas en primer plano tocando/saludando junto al vehículo, caras cercanas","calidad":"regular","motivo":"Caras de terceros en primer plano, alguno posiblemente joven/menor: revisar antes de usar; movimiento alto"},
+  {"start":19.8,"end":21.8,"desc":"MCM se inclina desde el vehículo hacia la gente, multitud y luces de fondo","calidad":"regular","motivo":"Plano fuerte de contenido pero con el movimiento más brusco del clip (pico a 20-21 s) y flashes que saturan"},
+  {"start":21.8,"end":23.08,"desc":"MCM saludando inclinada desde el auto, cierre","calidad":"regular","motivo":"Más estable pero muy corto y audio en fade-out"}
+]
