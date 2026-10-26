@@ -26,7 +26,7 @@ FONT_NAME = 'Inter Display'
 FONT_FILE = '/usr/share/fonts/opentype/inter/InterDisplay-Bold.otf'
 
 # ---- parámetros de mezcla ----
-VOICE_END_SRC = 80.22      # a partir de 80.25 arranca un "whoosh" agudo de la placa de El Tiempo
+VOICE_END_SRC = 80.24      # el whoosh agudo de la placa de El Tiempo arranca en 80.25 (fade de 18 ms antes)
 MUSIC_OFFSET = 6.9
 AMB_BELOW = 22.0           # LU por debajo de la voz (antes del ducking)
 MUSIC_SPEECH_BELOW = 19.5  # LU por debajo de la voz (mediana en habla) antes del rider
@@ -124,7 +124,7 @@ for i, ((a, b), o) in enumerate(zip(keeps, kofs)):
     seg = vsrc[int(round(sa * SR)):int(round(sb * SR))].copy()
     if last:  # corte de voz antes del whoosh de la placa final
         cut = int(round((VOICE_END_SRC - sa) * SR))
-        nf = int(0.03 * SR)
+        nf = int(0.018 * SR)
         seg[cut - nf:cut] *= np.linspace(1, 0, nf)[:, None]
         seg[cut:] = 0
     n = len(seg)
@@ -136,6 +136,9 @@ for i, ((a, b), o) in enumerate(zip(keeps, kofs)):
     d0 = int(round((o - (0 if first else h)) * SR))
     d1 = min(NS, d0 + n)
     voice[d0:d1] += (seg * env[:, None])[:d1 - d0]
+# "en Venezuela" llega débil en la fuente: +3 dB desde el final de "hay" (automatización de ganancia)
+VZ_FROM = src2edit(79.80)
+voice *= db(np.interp(np.arange(NS) / SR, [VZ_FROM - 0.04, VZ_FROM], [0, 3.0]))[:, None]
 sf.write(os.path.join(B, 'voice_cat.wav'), voice.astype(np.float32), SR, subtype='FLOAT')
 
 # highpass + compresión suave (gain previo para que el umbral -20 dB trabaje sobre la voz)
@@ -222,7 +225,14 @@ R = 100  # +-1,0 s
 cand = [np.clip(np.arange(int(w['s'] * 100) - R, int(w['s'] * 100) + R + 1), 0, nfr - 2) for w in words]
 # Fijaciones manuales (revisadas contra la envolvente: islas de habla tras pausas >0,4 s que el DP
 # asignaba a la palabra equivocada). (texto, onset Whisper editado aprox) -> onset real editado
-ONSET_FIX = {('irresponsable,', 12.97): 13.62, ('que', 23.72): 24.21, ('Y', 38.05): 38.64, ('que', 27.44): 27.46}
+ONSET_FIX = {('irresponsable,', 12.97): 13.62, ('que', 23.72): 24.21, ('Y', 38.05): 38.64,
+             # QA fase 5: "y que al final" (ráfagas en 27,48 y 27,68; re-transcripción del recorte)
+             ('y', 26.02): 27.46, ('que', 27.44): 27.64,
+             # QA fase 5: "Pero ahí se | quebró una" (habla 34,34-34,62 / 34,78-34,88 / 35,54-)
+             ('Pero', 34.12): 34.32, ('ahí', 34.38): 34.46, ('se', 34.58): 34.76,
+             ('quebró', 34.76): 35.53, ('una', 35.88): 35.86,
+             # cierre: el realce +3 dB desplazaba el DP; se fija a Whisper/islas (66,56 / 66,68)
+             ('en', 66.58): 66.56, ('Venezuela.', 66.70): 66.68}
 for (txt, tw), tf in ONSET_FIX.items():
     for i, w in enumerate(words):
         if w['w'] == txt and abs(w['s'] - tw) < 0.1:
@@ -400,7 +410,7 @@ by0, by1 = HY - hook_h / 2 - pady, HY + hook_h / 2 + pady
 
 rt_txt = 'María Corina Machado'
 rt_w = text_w(rt_txt, RT_FS)
-RY = int(0.506 * 1280)   # 0,52 pisaba el pelo de MCM en la toma 1
+RY = int(0.44 * 1280)   # con el recorte de la toma 1 corrido a x=650 MCM queda centrada: 0,52 le tapaba la cabeza
 rt_h = 68
 rx0 = 60
 acc_w = 10
@@ -440,10 +450,23 @@ rt_end = ts(3.5)
 lines.append(f'Dialogue: 2,0:00:00.00,{rt_end},Box,,0,0,0,,{{\\an7\\pos(0,0)\\fad(250,250)\\1c&H000000&\\1a&H38&\\p1}}{rect(rx0, RY - rt_h / 2, rx1, RY + rt_h / 2)}{{\\p0}}')
 lines.append(f'Dialogue: 3,0:00:00.00,{rt_end},Box,,0,0,0,,{{\\an7\\pos(0,0)\\fad(250,250)\\1c{YEL}\\1a&H00&\\p1}}{rect(rx0, RY - rt_h / 2, rx0 + acc_w, RY + rt_h / 2)}{{\\p0}}')
 lines.append(f'Dialogue: 4,0:00:00.00,{rt_end},Rotulo,,0,0,0,,{{\\an4\\pos({rx_text},{RY})\\fad(250,250)}}{rt_txt}')
-for a, b, txt in ev:
-    if b - a < 0.005:
-        continue
-    lines.append(f'Dialogue: 5,{ts(a)},{ts(b)},Sub,,0,0,0,,{{\\an5\\pos(360,832)}}{txt}')
+# cuantizar a frames de 25 fps (múltiplos de 4 cs) y encadenar: ningún frame con 2 eventos Sub
+qf = lambda t: int(round(t * FPS))
+evq = sorted([(qf(a), qf(b), txt) for a, b, txt in ev], key=lambda x: x[0])
+sub_ev = []
+for i, (a, b, txt) in enumerate(evq):
+    if i + 1 < len(evq):
+        b = min(b, evq[i + 1][0])
+    a = max(a, sub_ev[-1][1]) if sub_ev else a
+    if b > a:
+        sub_ev.append((a, b, txt))
+for i in range(len(sub_ev) - 1):
+    assert sub_ev[i][1] <= sub_ev[i + 1][0]
+def tsf(f_):
+    cs = f_ * 4
+    return f'{cs // 360000}:{cs // 6000 % 60:02d}:{cs // 100 % 60:02d}.{cs % 100:02d}'
+for a, b, txt in sub_ev:
+    lines.append(f'Dialogue: 5,{tsf(a)},{tsf(b)},Sub,,0,0,0,,{{\\an5\\pos(360,832)}}{txt}')
 with open(ASS, 'w', encoding='utf-8') as fh:
     fh.write(hdr + '\n'.join(lines) + '\n')
 print('ASS escrito:', ASS, len(ev), 'eventos de subtítulo')
@@ -453,15 +476,18 @@ json.dump([{k: v for k, v in w.items()} for w in words], open(os.path.join(B, 'w
 srcs = {c: to_wav48(os.path.join(ROOT, 'raw', f'{c}.mp4'), os.path.join(B, f'{c}_a.wav')) for c in ('mcm_a', 'mcm_b')}
 amb = np.zeros((NS, 2))
 AXF = 0.2
-for sh_ in edl:
+for k_, sh_ in enumerate(edl):
     if sh_['clip'] == 'convzlacomando':
         continue   # muteado (música agregada)
     src = srcs[sh_['clip']]
     t0 = round(sh_['t_in'] * FPS) / FPS
     t1 = round(sh_['t_out'] * FPS) / FPS
-    s0 = sh_['src_in'] - AXF / 2
-    d0 = t0 - AXF / 2
-    dur = (t1 - t0) + AXF
+    # junto a una toma muteada (o al inicio/fin) no hay pre-roll: fade-in/out de 0,3 s dentro de la toma
+    pre_ = AXF / 2 if (k_ > 0 and edl[k_ - 1]['clip'] != 'convzlacomando') else 0.0
+    post_ = AXF / 2 if (k_ + 1 < len(edl) and edl[k_ + 1]['clip'] != 'convzlacomando') else 0.0
+    s0 = sh_['src_in'] - pre_
+    d0 = t0 - pre_
+    dur = (t1 - t0) + pre_ + post_
     i0 = int(round(s0 * SR)); n = int(round(dur * SR))
     seg = np.zeros((n, 2))
     lo = max(0, i0); hi = min(len(src), i0 + n)
@@ -469,9 +495,10 @@ for sh_ in edl:
     L = lufs(seg)
     g = np.clip(-30 - L, -8, 8) if L > -70 else 0
     seg *= db(g)
-    nf = int(AXF * SR)
+    nfi = int((AXF if pre_ else 0.3) * SR); nfo = int((AXF if post_ else 0.3) * SR)
     env = np.ones(n)
-    env[:nf] = np.linspace(0, 1, nf); env[-nf:] = np.linspace(1, 0, nf)
+    env[:nfi] = np.sin(np.linspace(0, np.pi / 2, nfi)) ** 2
+    env[-nfo:] = np.cos(np.linspace(0, np.pi / 2, nfo)) ** 2
     seg *= env[:, None]
     p0 = int(round(d0 * SR))
     a_, b_ = max(0, p0), min(NS, p0 + n)
@@ -610,6 +637,9 @@ def kb(mode):
 
 # Seguimiento de MCM en la toma 23 (src 63,3-66,0): la cámara la deja salir por la derecha con el
 # recorte fijo x=560 de la EDL. Centros medidos sobre fotogramas de raw/mcm_b.mp4 (px de origen).
+# QA fase 5: en la toma 1 con x=560 asomaba arriba a la izq. una valla publicitaria (src x 360-440 en 60,6 s,
+# luego se va a la izquierda). Con centro 650 (recorte 448-852) queda fuera y MCM sigue en cuadro.
+CROP_FIX = {1: 650}
 TRACK = {23: [(63.3, 600), (64.0, 604), (64.6, 640), (65.2, 744), (65.6, 800), (66.0, 824)]}
 inputs, chains = [], []
 frame_log = []
@@ -635,10 +665,11 @@ for k, s in enumerate(edl):
             pp = np.array([(t_ - s['src_in']) / (s['src_out'] - s['src_in']) for t_, _ in track])
             co = np.polyfit(pp, (np.array(xs) - xa) * sfx, 3)  # suave; se recorta con max/min abajo
         else:
-            x = int(round(min(max(s['crop_x_center'] - cw / 2, 0), 1276 - cw)))
+            cxc = CROP_FIX.get(s['n'], s['crop_x_center'])
+            x = int(round(min(max(cxc - cw / 2, 0), 1276 - cw)))
             c += f'crop={cw}:718:{x}:0,'
     if clip == 'mcm_a':
-        c += 'fps=25:round=near,'
+        c += f'setpts=N/{FPS}/TB,'   # retime 24,935->25 fps 1:1 (0,26 % más rápido, sin duplicar frames)
     c += f'scale={Wp}:2560:flags=lanczos,setsar=1,format=yuv444p,'
     z0, z1, dx0, dx1, dy0, dy1 = kb(MODES[k % len(MODES)])
     M = max(1, N - 1)
