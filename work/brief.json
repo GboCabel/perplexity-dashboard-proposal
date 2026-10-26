@@ -1,0 +1,30 @@
+{
+  "plataforma": "Reels/TikTok/Shorts",
+  "formato": {"aspect": "9:16", "resolucion": "720x1280"},
+  "piezas": [{"id": "mcm_entrevista", "duracion_objetivo_s": [60, 75]}],
+  "audio": {
+    "voz": "raw/eltiempo.mp4 (entrevista El Tiempo), unica fuente de voz",
+    "fondo": "ambiente de los clips B-roll a -18/-20 dB con ducking bajo la voz",
+    "export": "AAC 192k"
+  },
+  "video": {
+    "estructura": "solo B-roll; la entrevista nunca se ve",
+    "broll": ["raw/convzlacomando.mp4", "raw/mcm_a.mp4", "raw/mcm_b.mp4 (16:9, requiere adaptar a 9:16)"],
+    "ken_burns": true,
+    "codec": "H.264 CRF 18-20, fps y resolucion de origen"
+  },
+  "cortes": "silencios >0.5s (dejar ~0.15s de aire), muletillas y falsos arranques; sin reordenar ni cambiar sentido",
+  "subtitulos": {
+    "estilo": "karaoke: 2-4 palabras por bloque, palabra activa resaltada, MAYUSCULAS, blanco con contorno negro",
+    "posicion_y": 0.65
+  },
+  "graficos": {
+    "rotulo": {"texto": "María Corina Machado", "segunda_linea": null, "duracion_s": [3, 4]},
+    "gancho_superior": "fijo todo el video; proponer 3 opciones desde la transcripcion",
+    "credito_fuente": false
+  },
+  "idioma": "es-VE",
+  "ortografia_exacta": ["María Corina Machado"],
+  "no_tocar": [],
+  "repo": "eliminar app React del dashboard y dejar repo solo de video (pendiente de aprobacion del plan)"
+}
