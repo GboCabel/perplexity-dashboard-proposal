@@ -1,0 +1,10 @@
+[
+  {"start":0.0,"end":3.5,"desc":"MCM sonriendo, asomada de camioneta, saluda a la multitud bajo el cartel del peaje 'A CARACAS', luna en el cielo","calidad":"buena","motivo":"Plano de ella reconocible y con expresion; camara en mano con algo de movimiento; mucho cielo negro arriba (ruido) que el Ken Burns puede recortar"},
+  {"start":3.5,"end":5.5,"desc":"Toma por detras/costado: MCM extiende el brazo hacia la gente, cartel CARACAS y casillas 1-2-3","calidad":"regular","motivo":"Buena composicion pero la camara se empieza a mover"},
+  {"start":5.5,"end":8.0,"desc":"Barrido rapido: MCM borrosa en primer plano, reflector quemado","calidad":"mala","motivo":"Movida brusca y desenfoque por movimiento; inutilizable"},
+  {"start":8.0,"end":9.5,"desc":"Paneo hacia motos y gente en la ruta","calidad":"mala","motivo":"Camara en transito, sin sujeto claro, motion blur"},
+  {"start":9.5,"end":12.0,"desc":"Multitud con bandera de Venezuela y celulares en alto, arboles y reflector de fondo","calidad":"regular","motivo":"Buen plano de ambiente de masa; algo de movimiento y ruido nocturno en cielo"},
+  {"start":12.0,"end":14.0,"desc":"MCM de espaldas frente al peaje, multitud y bandera","calidad":"buena","motivo":"Composicion clara, iluminacion del peaje, relativamente estable"},
+  {"start":14.0,"end":20.0,"desc":"Primer plano de simpatizantes emocionados (hombre con lentes gritando, mujeres) estirando manos hacia la camioneta; logo tricolor y cartel CARACAS","calidad":"regular","motivo":"Muy emotivo pero caras de terceros en primer plano y logo institucional del peaje arriba a la izquierda; revisar presencia de menores"},
+  {"start":20.0,"end":26.9,"desc":"MCM de pie en la camioneta da la mano a la gente, bandera de Venezuela, cartel CARACAS y casillas 1-2","calidad":"buena","motivo":"Tramo mas fuerte: sujeto claro, bandera, contexto; camara en mano con vaiven moderado"}
+]
