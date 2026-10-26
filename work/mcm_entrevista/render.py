@@ -29,7 +29,7 @@ FONT_FILE = '/usr/share/fonts/opentype/inter/InterDisplay-Bold.otf'
 VOICE_END_SRC = 80.22      # a partir de 80.25 arranca un "whoosh" agudo de la placa de El Tiempo
 MUSIC_OFFSET = 6.9
 AMB_BELOW = 22.0           # LU por debajo de la voz (antes del ducking)
-MUSIC_SPEECH_BELOW = 19.0  # LU por debajo de la voz, mediana en tramos con habla
+MUSIC_SPEECH_BELOW = 19.5  # LU por debajo de la voz (mediana en habla) antes del rider
 XF = 0.015                 # crossfade de voz en empalmes
 
 
@@ -218,13 +218,20 @@ def syll(w):
 
 SYL = 0.14
 nW = len(words)
-R = 60  # +-0,6 s
+R = 100  # +-1,0 s
 cand = [np.clip(np.arange(int(w['s'] * 100) - R, int(w['s'] * 100) + R + 1), 0, nfr - 2) for w in words]
+# Fijaciones manuales (revisadas contra la envolvente: islas de habla tras pausas >0,4 s que el DP
+# asignaba a la palabra equivocada). (texto, onset Whisper editado aprox) -> onset real editado
+ONSET_FIX = {('irresponsable,', 12.97): 13.62, ('que', 23.72): 24.21, ('Y', 38.05): 38.64, ('que', 27.44): 27.46}
+for (txt, tw), tf in ONSET_FIX.items():
+    for i, w in enumerate(words):
+        if w['w'] == txt and abs(w['s'] - tw) < 0.1:
+            cand[i] = np.array([int(round(tf * 100))])
 local = []
 for i, w in enumerate(words):
     c = cand[i]
     dev = np.abs(c / 100 - w['s'])
-    cost = np.maximum(0, dev - 0.06) * 5.0
+    cost = np.maximum(0, dev - 0.08) * 2.5
     cost += np.where(V[c] > 0, 0, 3.0)
     cost -= np.where(isl_on[c] | isl_on[np.minimum(c + 1, nfr - 1)] | isl_on[np.maximum(c - 1, 0)], 1.2, 0)
     local.append(cost)
@@ -235,7 +242,7 @@ for i in range(1, nW):
     a, b = cand[i - 1], cand[i]
     vc = (CV[b[None, :]] - CV[a[:, None]]) / 100       # tiempo sonoro de la palabra i-1
     span = (b[None, :] - a[:, None]) / 100
-    dc = np.abs(np.log((vc + 0.04) / (exp[i - 1] + 0.04))) * 1.6
+    dc = np.abs(np.log((np.maximum(vc, 0) + 0.04) / (exp[i - 1] + 0.04))) * 1.6
     tot = D[-1][:, None] + dc + local[i][None, :]
     tot = np.where(span >= 0.07, tot, 1e9)
     k = np.argmin(tot, 0)
@@ -288,7 +295,7 @@ def text_w(txt, fs, spacing=0):
 
 
 WEAK = {'de', 'la', 'el', 'y', 'que', 'del', 'los', 'las', 'una', 'un', 'al', 'en', 'a', 'o', 'por', 'lo', 'se', 'nos', 'ha', 'no', 'para', 'tan', 'más', 'mucho', 'como', 'cuando', 'hay', 'tanto', 'sí'}
-MAXW = 600
+MAXW = 612  # 600 px de caja + tolerancia mínima
 
 
 def punct(w):
@@ -300,8 +307,13 @@ phrases, cur = [], []
 for i, w in enumerate(words):
     cur.append(w)
     nxt = words[i + 1] if i + 1 < len(words) else None
-    if nxt is None or punct(w['w']) or (nxt['s'] - w['e']) > 0.45:
+    if nxt is None or punct(w['w']):
         phrases.append(cur); cur = []
+    elif (nxt['s'] - w['e']) > 0.45 and len(cur) >= 2:
+        if w['w'].lower() in WEAK and len(cur) >= 3:   # la palabra débil pasa a la frase siguiente
+            phrases.append(cur[:-1]); cur = [cur[-1]]
+        else:
+            phrases.append(cur); cur = []
 # 2) cada frase -> bloques de 2-4 palabras por programación dinámica
 def chunk_cost(ch, whole):
     n = len(ch)
@@ -313,7 +325,7 @@ def chunk_cost(ch, whole):
         c = 0
     last = ch[-1]['w']
     if not punct(last) and last.lower().strip('¿?,.') in WEAK:
-        c += 4.0          # no terminar bloque en palabra débil
+        c += 6.0          # no terminar bloque en palabra débil
     dur = ch[-1]['e'] - ch[0]['s']
     if dur > 2.2:
         c += (dur - 2.2) * 2
@@ -388,8 +400,8 @@ by0, by1 = HY - hook_h / 2 - pady, HY + hook_h / 2 + pady
 
 rt_txt = 'María Corina Machado'
 rt_w = text_w(rt_txt, RT_FS)
-RY = int(0.52 * 1280)
-rt_h = 74
+RY = int(0.506 * 1280)   # 0,52 pisaba el pelo de MCM en la toma 1
+rt_h = 68
 rx0 = 60
 acc_w = 10
 rx_text = rx0 + acc_w + 22
@@ -477,7 +489,7 @@ mus[:avail] = msrc[i0:i0 + avail]
 z, tt = ms_blocks(mus, win=3.0, hop=0.1)
 stl = -0.691 + 10 * np.log10(z + 1e-12)
 ref = np.median(stl[tt < 30])
-gcurve = -0.7 * np.clip(stl - ref, 0, None)       # solo aplanar los crecimientos
+gcurve = -1.0 * np.clip(stl - ref, 0, None)       # aplanar los crecimientos de la pista (desde ~48 s)
 gcurve = np.convolve(gcurve, np.ones(10) / 10, mode='same')
 tc = tt + 1.5
 gs = np.interp(np.arange(NS) / SR, tc, gcurve)
@@ -489,7 +501,7 @@ sh(['ffmpeg', '-v', 'error', '-y', '-i', os.path.join(B, 'voice_proc.wav'), '-i'
     '-i', os.path.join(B, 'music_pre.wav'), '-filter_complex',
     '[0:a]asplit=2[k1][k2];'
     '[1:a][k1]sidechaincompress=threshold=0.03:ratio=4:attack=20:release=300:knee=3:detection=rms[ad];'
-    '[2:a][k2]sidechaincompress=threshold=0.04:ratio=2.5:attack=20:release=300:knee=4:detection=rms[md]',
+    '[2:a][k2]sidechaincompress=threshold=0.03:ratio=4:attack=20:release=300:knee=4:detection=rms[md]',
     '-map', '[ad]', '-c:a', 'pcm_f32le', os.path.join(B, 'amb_duck.wav'),
     '-map', '[md]', '-c:a', 'pcm_f32le', os.path.join(B, 'music_duck.wav')])
 ambd = load(os.path.join(B, 'amb_duck.wav'))[:NS]
@@ -509,13 +521,36 @@ def speech_windows(x):
 
 zv, tb = ms_blocks(vproc)
 mask = np.array([speech[int(t * SR):int(t * SR) + int(0.4 * SR)].mean() > 0.6 for t in tb])
-mask &= (-0.691 + 10 * np.log10(zv + 1e-12)) > V_L - 12
+mask &= (-0.691 + 10 * np.log10(zv + 1e-12)) > V_L - 10
 zm, _ = ms_blocks(musd)
 LV = -0.691 + 10 * np.log10(zv + 1e-12)
 LM = -0.691 + 10 * np.log10(zm + 1e-12)
 # ganancia estática para que la música quede MUSIC_SPEECH_BELOW debajo (mediana en habla)
 gm = (V_L - MUSIC_SPEECH_BELOW) - np.median(LM[mask])
 musd *= db(gm)
+# ducking adicional "rider" (música y ambiente): donde haya habla y voz-(música+amb) < 17 LU (ventanas 400 ms),
+# se baja la música lo que falte (suavizado ~60 ms / 300 ms). Dos iteraciones.
+# cierre: en los últimos 2,5 s la música crece (+6 dB) y el rider se relaja a 15,5 LU
+tax = np.arange(NS) / SR
+musd *= db(np.interp(tax, [TOTAL - 3.2, TOTAL - 2.5], [0, 6.0]))[:, None]
+tgt = np.where(tb + 0.4 > TOTAL - 2.5, 15.5, 17.0)
+spk = np.array([speech[int(t * SR):int(t * SR) + int(0.4 * SR)].mean() > 0.3 for t in tb]) & (LV > V_L - 14)
+for it in range(3):
+    zb_, _ = ms_blocks(ambd + musd)
+    need = np.where(spk, np.maximum(0, tgt - (LV - (-0.691 + 10 * np.log10(zb_ + 1e-12)))), 0)
+    need = np.maximum.reduce([need, np.roll(need, 1), np.roll(need, -1)])
+    gtd = np.interp(np.arange(NS) / SR, tb + 0.2, -need)
+    # suavizado asimétrico (ataque rápido, release lento) en 1 kHz
+    dec = gtd[::48]
+    out = np.zeros_like(dec); cur_ = 0.0
+    for q, x in enumerate(dec):
+        k_ = 1 - np.exp(-1 / (0.06 * 1000)) if x < cur_ else 1 - np.exp(-1 / (0.3 * 1000))
+        cur_ += (x - cur_) * k_; out[q] = cur_
+    # adelantar 40 ms (look-ahead) para que el ataque llegue a tiempo
+    out = np.concatenate([out[40:], np.full(40, out[-1])])
+    gr_ = db(np.interp(np.arange(NS), np.arange(len(out)) * 48, out))[:, None]
+    musd *= gr_
+    ambd *= gr_
 # cierre: después de la última palabra la música sube a protagonista; red de seguridad fade-out 0,5 s
 tax = np.arange(NS) / SR
 boost = np.interp(tax, [last_word_end + 0.02, last_word_end + 0.2], [0, 12.0])
@@ -573,6 +608,9 @@ def kb(mode):
             'inUp': (1.00, 1.06, 0, 0, 0, -0.014)}[mode]
 
 
+# Seguimiento de MCM en la toma 23 (src 63,3-66,0): la cámara la deja salir por la derecha con el
+# recorte fijo x=560 de la EDL. Centros medidos sobre fotogramas de raw/mcm_b.mp4 (px de origen).
+TRACK = {23: [(63.3, 600), (64.0, 604), (64.6, 640), (65.2, 744), (65.6, 800), (66.0, 824)]}
 inputs, chains = [], []
 frame_log = []
 dims = {'convzlacomando': (720, 1280), 'mcm_a': (576, 1024), 'mcm_b': (1276, 718)}
@@ -583,24 +621,43 @@ for k, s in enumerate(edl):
     clip = s['clip']
     inputs += ['-ss', f"{s['src_in']:.3f}", '-t', f"{N / FPS + 0.6:.3f}", '-i', os.path.join(ROOT, 'raw', f'{clip}.mp4')]
     c = f'[{k}:v]setpts=PTS-STARTPTS,'
+    Wp = 1440
+    track = TRACK.get(s['n'])
     if clip == 'mcm_b':
         cw = 404
-        x = int(round(min(max(s['crop_x_center'] - cw / 2, 0), 1276 - cw)))
-        c += f'crop={cw}:718:{x}:0,'
+        if track:   # recorte ancho + paneo subpíxel dentro de perspective (sin jitter)
+            xs = [x_ for _, x_ in track]
+            xa = int(max(0, min(xs) - cw / 2)); xb = int(min(1276, max(xs) + cw / 2 + 1))
+            xa -= xa % 2; cwid = xb - xa; cwid += cwid % 2
+            c += f'crop={cwid}:718:{xa}:0,'
+            Wp = int(round(cwid * 2560 / 718 / 2)) * 2
+            sfx = Wp / cwid
+            pp = np.array([(t_ - s['src_in']) / (s['src_out'] - s['src_in']) for t_, _ in track])
+            co = np.polyfit(pp, (np.array(xs) - xa) * sfx, 3)  # suave; se recorta con max/min abajo
+        else:
+            x = int(round(min(max(s['crop_x_center'] - cw / 2, 0), 1276 - cw)))
+            c += f'crop={cw}:718:{x}:0,'
     if clip == 'mcm_a':
         c += 'fps=25:round=near,'
-    c += 'scale=1440:2560:flags=lanczos,setsar=1,format=yuv444p,'
+    c += f'scale={Wp}:2560:flags=lanczos,setsar=1,format=yuv444p,'
     z0, z1, dx0, dx1, dy0, dy1 = kb(MODES[k % len(MODES)])
     M = max(1, N - 1)
     P = f'(in/{M})'
     Z = f'({z0}+{z1 - z0:.4f}*{P})'
-    CX = f'(W*(0.5+{dx0}+{dx1 - dx0:.4f}*{P}))'
+    if track:
+        a3, a2, a1, a0 = co
+        CX = f'({a0:.3f}+{a1:.3f}*{P}+{a2:.3f}*{P}*{P}+{a3:.3f}*{P}*{P}*{P}+1440*({dx0}+{dx1 - dx0:.4f}*{P}))'
+        CX = CX.replace('+-', '-')
+    else:
+        CX = f'(1440*(0.5+{dx0}+{dx1 - dx0:.4f}*{P}))'
     CY = f'(H*(0.5+{dy0}+{dy1 - dy0:.4f}*{P}))'
-    HW = f'(W/(2*{Z}))'
-    HH = f'(H/(2*{Z}))'
+    HW = f'(720/{Z})'
+    HH = f'(1280/{Z})'
+    if track:   # el centro nunca deja salir el recorte del cuadro
+        CX = f'max({HW},min({Wp}-{HW},{CX}))'
     c += (f"perspective=x0='{CX}-{HW}':y0='{CY}-{HH}':x1='{CX}+{HW}':y1='{CY}-{HH}':"
           f"x2='{CX}-{HW}':y2='{CY}+{HH}':x3='{CX}+{HW}':y3='{CY}+{HH}':interpolation=cubic:eval=frame,")
-    c += f'scale=720:1280:flags=lanczos,trim=end_frame={N},setpts=N/{FPS}/TB[v{k}]'
+    c += f'scale=720:1280:flags=lanczos,setsar=1,trim=end_frame={N},setpts=N/{FPS}/TB[v{k}]'
     chains.append(c)
 assert sum(x[3] for x in frame_log) == NFR, (sum(x[3] for x in frame_log), NFR)
 fc = ';'.join(chains) + ';' + ''.join(f'[v{k}]' for k in range(len(edl))) + \
