@@ -8,14 +8,14 @@ description: Editar un reel vertical (Reels/TikTok/Shorts) que usa solo la voz d
 La entrevista solo aporta la voz; en pantalla se ve únicamente B-roll. Salida 9:16 con subtítulos karaoke,
 gancho fijo arriba, rótulo con el nombre y música de fondo que baja sola cuando habla la entrevistada.
 
-Archivos del skill:
+Archivos del skill (en `${CLAUDE_SKILL_DIR}`, la carpeta de este skill):
 - `defaults.json`: valores por defecto del brief (plataforma, formato, estilo de subtítulos, mezcla). Copiarlo
   a `work/brief.json` y preguntar solo lo que falte o cambie.
 - `scripts/transcribe.py`: transcripción con timestamps por palabra.
 - `scripts/analyze_voice.py`: silencios por energía, candidatos a voz del entrevistador, placa final, propuesta de `cuts.json`.
 - `scripts/render_referencia.py`: render completo del primer proyecto (mezcla, karaoke ASS, Ken Burns sin
   jitter, ensamblado). Es una referencia, no un script genérico: rutas y constantes como `ONSET_FIX`,
-  `CROP_FIX`, `TRACK`, `VOICE_END_SRC` y `MUSIC_OFFSET` son de esa pieza. Copiarlo a `work/<pieza>/render.py` y adaptarlo.
+  `CROP_FIX`, `TRACK`, `VOICE_END_SRC` y `MUSIC_OFFSET` son de esa pieza. Copiarlo a `work/<pieza>/render.py` y adaptarlo (lee `work/eltiempo/cuts.json`, `work/<pieza>/edl.json` y la música desde rutas fijas).
 
 ## Reglas
 - `raw/` nunca se modifica. Trabajo en `work/<pieza>/`, entregas en `final/`.
@@ -44,9 +44,9 @@ Partir de `defaults.json` y preguntar solo:
 **Entrevista:**
 1. `ffprobe` de la entrevista y extracción de frames del principio y del final: los clips de medios suelen venir
    ya editados, con subtítulos y logos grabados y una placa final con música.
-2. `scripts/transcribe.py raw/<entrevista>.mp4 work/<entrevista>/transcript.json "Entrevista a <Nombre>."`
+2. `.venv-whisper/bin/python ${CLAUDE_SKILL_DIR}/scripts/transcribe.py raw/<entrevista>.mp4 work/<entrevista>/transcript.json "Entrevista a <Nombre>."`
    (el tercer argumento ayuda a escribir bien los nombres propios).
-3. `scripts/analyze_voice.py raw/<entrevista>.mp4 work/<entrevista>/transcript.json work/<entrevista>/cuts.json`.
+3. `.venv-whisper/bin/python ${CLAUDE_SKILL_DIR}/scripts/analyze_voice.py raw/<entrevista>.mp4 work/<entrevista>/transcript.json work/<entrevista>/cuts.json`.
    - **Silencios:** se miden por energía, no por Whisper. Whisper estira palabras (una de 1,8 s) y esconde pausas dentro.
    - **Voz del entrevistador:** el script lista candidatos (frases cortas o interrogativas). Confirmarlos a oído.
      NO usar el tono de voz (F0/pyin) como prueba: en audio de broadcast da errores de octava.
