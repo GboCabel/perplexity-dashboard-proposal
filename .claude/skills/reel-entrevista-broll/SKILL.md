@@ -1,6 +1,6 @@
 ---
 name: reel-entrevista-broll
-description: Editar un reel vertical (Reels/TikTok/Shorts) que usa solo la voz de una entrevista sobre B-roll, con subtítulos karaoke, gancho fijo, rótulo y música épica. Usar cuando el usuario trae una entrevista y clips de B-roll en raw/ y pide un reel, short o video vertical.
+description: Edita un reel vertical con la voz de una entrevista sobre B-roll: subtítulos karaoke, gancho, rótulo y música. Usar si el usuario trae entrevista y clips y pide un reel o short.
 ---
 
 # Reel de entrevista sobre B-roll
